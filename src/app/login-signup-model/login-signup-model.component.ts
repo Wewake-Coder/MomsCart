@@ -32,7 +32,7 @@ export class LoginSignupModelComponent implements OnInit {
     }
     this.commonService.post(this.url, {email: this.createLoginForm.controls.email.value,
        password: this.createLoginForm.controls.password.value } ).subscribe(data => {
-      if (data.status === true) {
+      if (data && data.status === true) {
         this.errorMsg = '';
         data = data.data;
         localStorage.setItem('user', JSON.stringify(data));

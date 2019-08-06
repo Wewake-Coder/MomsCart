@@ -37,13 +37,20 @@ export class CategoryComponent implements OnInit {
   }
 
   addToCart(productId, quantity) {
-    this.commonService.addToCart(productId, quantity, this.userId).subscribe(data => {
-      if (data.status === true) {
-        this.router.navigate(['/cart']);
-      } else {
-        alert('Something went wrong, please try again later');
-      }
-    });
+    if (!this.userId) {
+      const userData = localStorage.getItem('user');
+      this.userId = userData ? JSON.parse(userData).id : '';
+    }
+    const response = this.commonService.addToCart(productId, quantity, this.userId);
+    if (response) {
+      response.subscribe(data => {
+        if (data.status === true) {
+          this.router.navigate(['/cart']);
+        } else {
+          alert('Something went wrong, please try again later');
+        }
+      });
+    }
   }
 
 }
