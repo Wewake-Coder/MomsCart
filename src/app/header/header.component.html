@@ -1,0 +1,116 @@
+<!-- Header section -->
+<header class="header-section">
+  <div class="header-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-sm-4 text-center text-lg-left">
+          <!-- logo -->
+          <a href="./index.html" class="site-logo">
+            <img src="assets/logo.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-xl-6 col-lg-5 col-sm-8 searchbar">
+          <form class="header-search-form">
+            <input type="text" placeholder="Search on MomsKart ....">
+            <button><i class="flaticon-search"></i></button>
+          </form>
+        </div>
+        <div class="col-xl-4 col-lg-5 center">
+          <div class="user-panel">
+            <div class="up-item">
+              <span class="panel-icons" *ngIf="userData?.name && userData?.profile_pic">
+                <img src="{{userData?.profile_pic}}">
+                Welcome {{userData?.name}}
+                <br />
+                <a style="cursor: pointer" (click)="logout()">Logout</a>
+              </span>
+              <a style="cursor: pointer" data-toggle="modal" data-target="#myModal" *ngIf="!userData" #loginButton>Log In & SignUp </a>
+            </div>
+            <div class="up-item">
+              <div class="shopping-card">
+                <span class="panel-icons"><img src="assets/icons/cart.png"></span>
+                <span class="cart-count">{{cartItemCount}}</span>
+              </div>
+              <a [routerLink]="['/cart']" style="margin-left: 10px;">Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mynavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mynavinner" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" style="margin:auto;">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/categorypage/16/0']">MomsKart Specials</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Sweets
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/categorypage/17/7']">Mithai</a>
+            <a class="dropdown-item" [routerLink]="['/categorypage/17/8']">Choclates & Fudges</a>
+
+            <a class="dropdown-item" [routerLink]="['/categorypage/17/9']">Cakes</a>
+            <a class="dropdown-item" [routerLink]="['/categorypage/17/17']">Jam & Honey</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/categorypage']">EXPLORE ALL</a> -->
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Snacks
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/categorypage/18/10']">Namkeen</a>
+            <a class="dropdown-item" [routerLink]="['/categorypage/18/11']">Biscuits</a>
+
+            <a class="dropdown-item" [routerLink]="['/categorypage/18/12']">Breakfast Cereals & Cheese</a>
+            <a class="dropdown-item" [routerLink]="['/categorypage/18/15']">Cheesey</a>
+            <!-- <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/categorypage']">EXPLORE ALL</a> -->
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/categorypage/20/0']">
+            Pickles
+          </a>
+
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">The Shortlist</a>
+        </li> -->
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Pages
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" [routerLink]="['/cart']">Cart Page</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/categorypage']">Category Page</a>
+
+            <a class="dropdown-item" href="#" [routerLink]="['/contact']">Contact Page</a>
+            <a class="dropdown-item" href="#" [routerLink]="['/cart']">Checkout Page</a>
+          </div>
+        </li> -->
+        <!-- <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/blogs']" href="#">Blogs</a>
+        </li> -->
+
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<app-login-signup-model (eventEmitter)="performAction($event)"></app-login-signup-model>
